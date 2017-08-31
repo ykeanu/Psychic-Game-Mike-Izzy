@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Hangman Game | Javascript</title>
+<!-- Reset CSS -->
+<!-- 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css -->
+<!-- Boostrap 4.0 Beta -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<!-- Local CSS styling -->
+<!-- 	<link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+
+</head>
+<body>
+
+
+<div id="game">
+<h2>The Psychic Game</h2>
+<p>Press to start!</p>
+</div>
+
+
+<!-- <p>Wins: </p>
+
+<p>Losses: </p>
+
+<p>Guesses: </p>
+
+<p>Your Guesses so far: </p>
+ -->
+
+
+<!-- Javascript | Local link to game.js  -->
+
+<script type="text/javascript">
+
+
+
+
+// Array of possible outcomes: A-Z
+var letters = ["a", "b"];
+var wins = 0;
+var losses = 0;
+var guesses = 2;
+// var userGuesses = [];    ~
+
+	document.onkeyup = function(event) {
+
+	// Computer guess random generated letter from array
+
+	var computerGuess = letters[Math.floor(Math.random()*letters.length)];
+	console.log(computerGuess);
+
+	var userGuess = event.key.toLowerCase();
+	console.log(userGuess);
+
+	// User keyup compared to computer guess
+
+
+	if (userGuess === "a" || userGuess === "b") {
+		if (userGuess === computerGuess) {
+			wins++;
+			guesses = 2;
+		} else {
+			guesses--;
+		}
+	} 
+
+
+// Reset
+	if (guesses === 0) {
+		losses++;
+		alert("You lose!");
+		guesses = 2;
+	}
+
+	console.log(wins);
+	console.log(losses);
+	console.log(guesses);
+
+	// else {
+	// 	losses++
+	// }
+
+		// If wins game resets, if loss game continues
+
+		// update win-loss counters
+
+		// update guesses left
+
+	// List out user guesses so far
+
+	// Repeat: if you win reset, if guess=0 reset
+
+
+var newArray = [];
+newArray.push("userGuess");
+console.log(newArray);
+
+
+        var html =
+          "<p>You chose: " + userGuess + "</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>losses: " + losses + "</p>" +
+          "<p>guesses left: " + guesses + "</p>";
+
+        // Set the inner HTML contents of the #game div to our html string
+        document.querySelector("#game").innerHTML = html;
+
+
+	}
+	
+
+
+
+</script>
+
+</body>
+</html>
